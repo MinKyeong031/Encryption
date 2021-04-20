@@ -28,10 +28,14 @@
             android:orientation="horizontal"
             android:gravity="center">
             <ImageView
+                android:id="@+id/toPlain"
+                android:layout_marginRight="20dp"
                 android:layout_width="70dp"
                 android:layout_height="200dp"
                 android:src="@drawable/ic_plain"/>
             <ImageView
+                android:id="@+id/toCiper"
+                android:layout_marginLeft="20dp"
                 android:layout_width="70dp"
                 android:layout_height="200dp"
                 android:src="@drawable/ic_ciper"/>

@@ -25,12 +25,13 @@
                 android:text="암호키"
                 android:textSize="30dp" />
             <EditText
+                android:background="@null"
                 android:layout_marginLeft="30dp"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
         <LinearLayout
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -44,12 +45,14 @@
                 android:text="평문"
                 android:textSize="30dp" />
             <EditText
+                android:background="@null"
                 android:layout_marginLeft="30dp"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"/>
         </LinearLayout>
 
         <Button
+            android:id="@+id/toProcess"
             android:layout_marginTop="100dp"
             android:layout_width="150dp"
             android:layout_height="60dp"
