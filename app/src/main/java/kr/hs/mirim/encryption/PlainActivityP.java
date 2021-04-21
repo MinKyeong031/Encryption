@@ -6,6 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+
+import static kr.hs.mirim.encryption.PlainActivityM.keyP;
+import static kr.hs.mirim.encryption.PlainActivityM.plain;
 
 public class PlainActivityP extends AppCompatActivity {
 
@@ -17,6 +23,8 @@ public class PlainActivityP extends AppCompatActivity {
         setContentView(R.layout.activity_plain_p);
 
         goHome = findViewById(R.id.goHome);
+
+        ArrayList<String> distinctKeyP = Methods.distinct(keyP.split(""));
 
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override

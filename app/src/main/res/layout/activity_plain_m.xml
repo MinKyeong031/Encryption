@@ -25,7 +25,7 @@
                 android:text="암호키"
                 android:textSize="30dp" />
             <EditText
-                android:background="@null"
+                android:id="@+id/keyEdt"
                 android:layout_marginLeft="30dp"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"/>
@@ -45,7 +45,7 @@
                 android:text="평문"
                 android:textSize="30dp" />
             <EditText
-                android:background="@null"
+                android:id="@+id/plainEdt"
                 android:layout_marginLeft="30dp"
                 android:layout_width="220dp"
                 android:layout_height="wrap_content"/>
