@@ -34,7 +34,6 @@
             android:orientation="vertical">
             <TextView
                 android:layout_marginLeft="50dp"
-                android:id="@+id/process1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumbold"
@@ -304,7 +303,6 @@
             android:orientation="vertical">
             <TextView
                 android:layout_marginLeft="50dp"
-                android:id="@+id/process2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumbold"
@@ -331,7 +329,6 @@
             android:background="@drawable/round_button_ciper"
             android:gravity="center">
             <TextView
-                android:id="@+id/plain_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/nanumbold"
