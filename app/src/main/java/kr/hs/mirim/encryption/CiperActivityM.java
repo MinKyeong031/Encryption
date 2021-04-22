@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class CiperActivityM extends AppCompatActivity {
     //복호화 메인
@@ -34,12 +35,16 @@ public class CiperActivityM extends AppCompatActivity {
             public void onClick(View v) {
                 keyC = keyEdt.getText().toString().trim();
                 ciper = ciperEdt.getText().toString().trim();
-                toProcessA();
+                if(keyC.isEmpty() || ciper.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "암호키와 암호문을 적어주세요!", Toast.LENGTH_SHORT).show();
+                }else{
+                    toProcess();
+                }
             }
         });
     }
 
-    public void toProcessA(){
+    public void toProcess(){
         Intent intent = new Intent(this, CiperActivityP.class);
         startActivity(intent);
     }

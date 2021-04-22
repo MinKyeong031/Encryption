@@ -10,8 +10,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/plain_text"
             android:layout_width="match_parent"
@@ -22,30 +23,32 @@
             android:textSize="30dp" />
 
         <LinearLayout
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center">
+            android:layout_marginTop="50dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
             <ImageView
                 android:id="@+id/toPlain"
-                android:layout_marginRight="20dp"
                 android:layout_width="70dp"
                 android:layout_height="200dp"
-                android:src="@drawable/ic_plain"/>
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_plain" />
+
             <ImageView
                 android:id="@+id/toCiper"
-                android:layout_marginLeft="20dp"
                 android:layout_width="70dp"
                 android:layout_height="200dp"
-                android:src="@drawable/ic_ciper"/>
+                android:layout_marginLeft="20dp"
+                android:src="@drawable/ic_ciper" />
         </LinearLayout>
 
         <TextView
-            android:layout_marginTop="50dp"
             android:id="@+id/ciper_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/nanumbold"
             android:gravity="center"
             android:text="암호문"

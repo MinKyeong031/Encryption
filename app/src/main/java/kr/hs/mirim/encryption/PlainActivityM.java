@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class PlainActivityM extends AppCompatActivity {
     //암호화 메인
@@ -32,12 +33,16 @@ public class PlainActivityM extends AppCompatActivity {
             public void onClick(View v) {
                 keyP = keyEdt.getText().toString().trim();
                 plain = plainEdt.getText().toString().trim();
-                toProcessA();
+                if(keyP.isEmpty() || plain.isEmpty()){
+                    Toast.makeText(getApplicationContext(), "암호키와 암호문을 적어주세요!", Toast.LENGTH_SHORT).show();
+                }else{
+                    toProcess();
+                }
             }
         });
     }
 
-    public void toProcessA(){
+    public void toProcess(){
         Intent intent = new Intent(this, PlainActivityP.class);
         startActivity(intent);
     }
