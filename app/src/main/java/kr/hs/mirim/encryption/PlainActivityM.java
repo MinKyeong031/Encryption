@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class PlainActivityM extends AppCompatActivity {
-
+    //암호화 메인
+    
     EditText keyEdt;
     EditText plainEdt;
     Button toProcess;

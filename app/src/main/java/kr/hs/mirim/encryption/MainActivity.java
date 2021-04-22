@@ -35,11 +35,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void toPlainA(){
+    public void toCiperA(){
         Intent intent = new Intent(this, PlainActivityM.class);
         startActivity(intent);
     }
-    public void toCiperA() {
+    public void toPlainA() {
         Intent intent = new Intent(this, CiperActivityM.class);
         startActivity(intent);
     }

@@ -12,8 +12,10 @@ import java.util.ArrayList;
 
 import static kr.hs.mirim.encryption.CiperActivityM.keyC;
 import static kr.hs.mirim.encryption.CiperActivityM.ciper;
+import static kr.hs.mirim.encryption.PlainActivityM.plain;
 
 public class CiperActivityP extends AppCompatActivity {
+    //복호화 과정
     public static char alphabetBoard[][] = new char[5][5];
     public static boolean oddFlag = false; //글자수 출력
 
@@ -83,27 +85,8 @@ public class CiperActivityP extends AppCompatActivity {
         String[][] ciperTable = Methods.setBoard(keyC, alphabetBoard); //암호판 배열 입력
         inputCiperTable(ciperTable); //테이블에 암호판 입력
 
-        String zCheck = "";
-        String blankCheck = "";
-
-        for( int i = 0 ; i < ciper.length() ; i++ )
-        {
-            if(ciper.charAt(i)==' ') //공백제거
-            {
-                ciper = ciper.substring(0,i)+ciper.substring(i+1,ciper.length());
-                blankCheck+=10;
-            }
-            else {   blankCheck+=0; }
-            if(ciper.charAt(i)=='z') //z를 q로 바꿔줘서 처리함.
-            {
-                ciper = ciper.substring(0,i)+'q'+ciper.substring(i+1,ciper.length());
-                zCheck+=1;
-            }
-            else{   zCheck+=0; }
-        }
-
-        process.setText(encryptionProcess(ciper)); //암호화 과정
-        result.setText(encryptionResult(ciper)); //암호화된 문자열
+        process.setText(decryptionProcess(ciper)); //암호화 과정
+        result.setText(decryptionResult(ciper)); //암호화된 문자열
 
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,7 +101,7 @@ public class CiperActivityP extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private String encryptionProcess(String ciper) {//암호화 과정(두 문자씩)
+    private String decryptionProcess(String ciper) {//복호화 과정(두 문자씩)
         ArrayList<char[]> playFair = new ArrayList<char[]>();
         String prociper = "";
 
@@ -149,35 +132,24 @@ public class CiperActivityP extends AppCompatActivity {
         return prociper;
     }
 
-    private String encryptionResult(String ciper) {//암호화 결과
-        ArrayList<char[]> playFair = new ArrayList<char[]>();
-        ArrayList<char[]> encPlayFair = new ArrayList<char[]>();
-        int x1 = 0 , x2 = 0 , y1 = 0, y2 = 0;
-        String enciper ="";
+    private String decryptionResult(String ciper) {//복호화 결과
+        ArrayList<char[]> playFair = new ArrayList<char[]>(); //바꾸기 전 쌍자암호를 저장할 곳
+        ArrayList<char[]> decPlayFair = new ArrayList<char[]>(); //바꾼 후의 쌍자암호 저장할 곳
+        int x1 = 0 , x2 = 0 , y1 = 0, y2 = 0; //쌍자 암호 두 글자의 각각의 행,열 값
+        String deciper ="";
 
-        for( int i = 0 ; i < ciper.length() ; i+=2 ) // arraylist 세팅
+        for( int i = 0 ; i < ciper.length() ; i+=2 )
         {
             char[] tmpArr = new char[2];
             tmpArr[0] = ciper.charAt(i);
-            try{
-                if( ciper.charAt(i) == ciper.charAt(i+1)) //글이 반복되면 x추가
-                {
-                    tmpArr[1] = 'x';
-                    i--;
-                }else{
-                    tmpArr[1] = ciper.charAt(i+1);
-                }
-            }catch(StringIndexOutOfBoundsException e)
-            {
-                tmpArr[1] = 'x';
-                oddFlag = true;
-            }
+            tmpArr[1] = ciper.charAt(i+1);
             playFair.add(tmpArr);
         }
+
         for(int i = 0 ; i < playFair.size() ; i++ )
         {
             char[] tmpArr = new char[2];
-            for( int j = 0 ; j < alphabetBoard.length ; j++ ) //쌍자암호의 각각 위치체크
+            for( int j = 0 ; j < alphabetBoard.length ; j++ )
             {
                 for( int k = 0 ; k < alphabetBoard[j].length ; k++ )
                 {
@@ -193,30 +165,36 @@ public class CiperActivityP extends AppCompatActivity {
                     }
                 }
             }
-
-            if(x1==x2) //행이 같은경우
+            if(x1==x2) //행이 같은 경우 각각 바로 아래열 대입
             {
-                tmpArr[0] = alphabetBoard[x1][(y1+1)%5];
-                tmpArr[1] = alphabetBoard[x2][(y2+1)%5];
+                tmpArr[0] = alphabetBoard[x1][(y1+4)%5];
+                tmpArr[1] = alphabetBoard[x2][(y2+4)%5];
             }
-            else if(y1==y2) //열이 같은 경우
+            else if(y1==y2) //열이 같은 경우 각각 바로 옆 열 대입
             {
-                tmpArr[0] = alphabetBoard[(x1+1)%5][y1];
-                tmpArr[1] = alphabetBoard[(x2+1)%5][y2];
+                tmpArr[0] = alphabetBoard[(x1+4)%5][y1];
+                tmpArr[1] = alphabetBoard[(x2+4)%5][y2];
             }
-            else //행, 열 모두 다른경우
+            else //행, 열 다른경우 각자 대각선에 있는 곳.
             {
                 tmpArr[0] = alphabetBoard[x2][y1];
                 tmpArr[1] = alphabetBoard[x1][y2];
             }
-            encPlayFair.add(tmpArr);
+            decPlayFair.add(tmpArr);
         }
-
-        for(int i = 0 ; i < encPlayFair.size() ; i++)
+        for(int i = 0 ; i < decPlayFair.size() ; i++) //중복 문자열 돌려놓음
         {
-            enciper += encPlayFair.get(i)[0]+""+encPlayFair.get(i)[1]+" ";
+            if(i!=decPlayFair.size()-1 && decPlayFair.get(i)[1]=='x'
+                    && decPlayFair.get(i)[0]==decPlayFair.get(i+1)[0])
+            {
+                deciper += decPlayFair.get(i)[0];
+            }
+            else
+            {
+                deciper += decPlayFair.get(i)[0]+""+decPlayFair.get(i)[1];
+            }
         }
-        return enciper;
+        return deciper;
     }
 
     private void inputCiperTable(String[][] ciperTable) { //테이블에 암호판 입력

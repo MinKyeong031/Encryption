@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 public class CiperActivityM extends AppCompatActivity {
+    //복호화 메인
 
     EditText keyEdt;
     EditText ciperEdt;
