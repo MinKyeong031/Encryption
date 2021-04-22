@@ -25,13 +25,13 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 toPlainA();
             }
-        });
+        }); // 암호화로 이동
         toCiper.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 toCiperA();
             }
-        });
+        }); // 복호화로 이동
 
     }
 

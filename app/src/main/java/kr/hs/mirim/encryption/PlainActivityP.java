@@ -82,7 +82,8 @@ public class PlainActivityP extends AppCompatActivity {
         result = findViewById(R.id.result);
 
         String[][] ciperTable = Methods.setBoard(keyP, alphabetBoard); //암호판 배열 입력
-        inputCiperTable(ciperTable); //테이블에 암호판 입력
+        Methods.inputCiperTable(ciperTable, ciper1, ciper2, ciper3, ciper4, ciper5, ciper6, ciper7, ciper8, ciper9, ciper10, ciper11, ciper12, ciper13
+                , ciper14, ciper15, ciper16, ciper17, ciper18, ciper19, ciper20, ciper21, ciper22, ciper23, ciper24, ciper25); //테이블에 암호판 입력
 
         String zCheck = "";
         String blankCheck = "";
@@ -218,33 +219,5 @@ public class PlainActivityP extends AppCompatActivity {
             enplain += encPlayFair.get(i)[0]+""+encPlayFair.get(i)[1]+" ";
         }
         return enplain;
-    }
-
-    private void inputCiperTable(String[][] ciperTable) { //테이블에 암호판 입력
-        ciper1.setText(ciperTable[0][0]);
-        ciper2.setText(ciperTable[0][1]);
-        ciper3.setText(ciperTable[0][2]);
-        ciper4.setText(ciperTable[0][3]);
-        ciper5.setText(ciperTable[0][4]);
-        ciper6.setText(ciperTable[1][0]);
-        ciper7.setText(ciperTable[1][1]);
-        ciper8.setText(ciperTable[1][2]);
-        ciper9.setText(ciperTable[1][3]);
-        ciper10.setText(ciperTable[1][4]);
-        ciper11.setText(ciperTable[2][0]);
-        ciper12.setText(ciperTable[2][1]);
-        ciper13.setText(ciperTable[2][2]);
-        ciper14.setText(ciperTable[2][3]);
-        ciper15.setText(ciperTable[2][4]);
-        ciper16.setText(ciperTable[3][0]);
-        ciper17.setText(ciperTable[3][1]);
-        ciper18.setText(ciperTable[3][2]);
-        ciper19.setText(ciperTable[3][3]);
-        ciper20.setText(ciperTable[3][4]);
-        ciper21.setText(ciperTable[4][0]);
-        ciper22.setText(ciperTable[4][1]);
-        ciper23.setText(ciperTable[4][2]);
-        ciper24.setText(ciperTable[4][3]);
-        ciper25.setText(ciperTable[4][4]);
     }
 }
