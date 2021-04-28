@@ -32,8 +32,8 @@ public class PlainActivityM extends AppCompatActivity {
         toProcess.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                keyP = keyEdt.getText().toString().trim();
-                plain = plainEdt.getText().toString().trim();
+                keyP = keyEdt.getText().toString().trim().toLowerCase();
+                plain = plainEdt.getText().toString().trim().toLowerCase();
                 if(keyP.isEmpty() || plain.isEmpty()){
                     Toast.makeText(getApplicationContext(), "암호키와 암호문을 적어주세요!", Toast.LENGTH_SHORT).show();
                 }else{
