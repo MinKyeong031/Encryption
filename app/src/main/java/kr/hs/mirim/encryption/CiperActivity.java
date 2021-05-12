@@ -88,7 +88,9 @@ public class CiperActivity extends AppCompatActivity {
 
         ciperresult = decryptionResult(ciper);
 
-        for( int i = 0 ; i < ciperresult.length() ; i++)//공백 제거
+        process.setText(ciperresult); //암호화 과정
+
+        for( int i = 0 ; i < ciperresult.length()-1 ; i++)//공백 제거
         {
             if(blank.charAt(i)=='1')
             {
@@ -96,7 +98,11 @@ public class CiperActivity extends AppCompatActivity {
             }
         }
 
-        process.setText(decryptionProcess(ciper)); //암호화 과정
+        StringBuffer bf = new StringBuffer(ciperresult);
+        if(ciperresult.charAt(ciperresult.length()-1) == 'x'){
+            bf.deleteCharAt(ciperresult.length()-1);
+        }
+        ciperresult = bf.toString();
         result.setText(ciperresult); //암호화된 문자열
 
         goHome.setOnClickListener(new View.OnClickListener() {

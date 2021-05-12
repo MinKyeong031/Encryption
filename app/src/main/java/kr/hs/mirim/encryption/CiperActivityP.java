@@ -88,6 +88,17 @@ public class CiperActivityP extends AppCompatActivity {
         process.setText(decryptionProcess(ciper)); //암호화 과정
         result.setText(decryptionResult(ciper)); //암호화된 문자열
 
+        String ciperresult = decryptionResult(ciper);
+
+        process.setText(ciperresult); //암호화 과정
+
+        StringBuffer bf = new StringBuffer(ciperresult);
+        if(ciperresult.charAt(ciperresult.length()-1) == 'x'){
+            bf.deleteCharAt(ciperresult.length()-1);
+        }
+        ciperresult = bf.toString();
+        result.setText(ciperresult); //암호화된 문자열
+
         goHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
